@@ -1,0 +1,16 @@
+services:
+  app:
+    container_name: tiny-url-app
+    build: .
+    volumes:
+      - "./src/:/src/"
+    ports:
+      - "3000:3000"
+    links:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    restart: always
+    ports:
+      - '27017:27017'
